@@ -1,4 +1,4 @@
-# ScriptInk Tatto Studio
+# ScriptInk Tattoo Studio
 ### by Paco Fuentes
 ---
 <a href="https://www.reactjs.com/">
@@ -26,15 +26,15 @@
   </ol>
 </details>
 
-## Objetivo 🎯
+## Objetive 🎯
 The ScriptInk Tattoo Studio Web App harmonizes a user-friendly frontend, seamlessly integrating with a pre-existing backend. Leveraging technologies like React, Redux, CSS, and Bootstrap, our goal is to elevate the tattoo experience, creating a seamless platform for design exploration and appointment scheduling.
 
-## Sobre el proyecto 🔎
+## About🔎
 Welcome to ScriptInk Tattoo Studio, where art meets technology in our user-friendly web application. Our studio seamlessly blends the power of React, Redux, CSS, Bootstrap, and more to bring you an effortlessly managed experience for exploring and booking your next tattoo. Dive into the world of ScriptInk, where your creativity takes center stage, supported by the simplicity and functionality of our web application. Join us in making your tattoo journey a memorable one!
 
 ## Deploy 🚀
 <div align="center">
-    <a href="https://www.google.com"><strong> Abierto 19 de noviembre </strong></a>🚀🚀🚀
+    <a href="https://www.google.com"><strong> Coming soon... </strong></a>🚀🚀🚀
 </div>
 
 ## Stack
