@@ -12,7 +12,7 @@ export const Gallery = () => {
             bringTattoos()
                 .then((results) => {
                     console.log('hola desde el then de tattoos');
-                    setTattoos(results.data.results);
+                    setTattoos(results.data);
                 })
                 .catch((error) => console.log(error));
         }
@@ -20,31 +20,39 @@ export const Gallery = () => {
 
     console.log(tattoos);
 
-    return (
-        <div className="galleryDesign">
-            {tattoos.length > 0 ? (
+    const tellMe = (argumento) => {
+        console.log(argumento)
+    }
 
-                <div className='tattooRoster'>
-                    {
-                        tattoos.map(
-                            tattoo => {
-                                return (
-                                    <TattooCard
-                                        key={tattoo.id}
-                                        image={tattoo.img_url}
-                                    />
+
+    return (
+        <div className='homeDesign'>
+            {
+                tattoos.length > 0
+                    ? (
+                        <div className='tattooRoster'>
+                            {
+                                tattoos.map(
+                                    tattoo => {
+                                        return (
+                                            <TattooCard
+                                                key={tattoo.id}
+                                                image={tattoo.img_url}
+                                                selected={"selectedCard"}
+                                                selectFunction={() => tellMe(tattoo)}
+                                            />
+                                        )
+                                    }
                                 )
                             }
-                        )
-                    }
-                    
-                </div>
-            ) : (
-                <div>Tattoos will comming soon...</div>
-            )
+                        </div>
+                    )
+                    : (
+                        <div>Aún no han venido</div>
+                    )
             }
-        </div >
-    );
+        </div>
+    )
 };
 
 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './TattooCard.css'
 
-export const TattooCard = ({image}) => {
+export const TattooCard = ({name, image, status, location, selected, selectFunction}) => {
 
      const [change, setChange] = useState(true);
 
@@ -15,8 +15,10 @@ export const TattooCard = ({image}) => {
      }
 
      return (
-        <div className={`tattooCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
-            <div><img className='tattoo' src={image}/></div>
+        <div className={`characterCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
+            <div>{name}</div>
+            <div><img className='avatar' src={image} alt={name}/></div>
+            <div>{status}</div>
             <div>{location}</div>
         </div>
      )

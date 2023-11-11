@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const bringTattoos = async () => {
-  return await axios.get(`http://localhost:4000/user/getalltattooartist`);
+  return await axios.get(`http://localhost:4000/user/alltattoos`);
 };
 
 // export const bringCharacters = async () => {
