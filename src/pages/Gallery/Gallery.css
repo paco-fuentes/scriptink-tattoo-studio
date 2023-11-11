@@ -1,0 +1,25 @@
+
+.galleryDesign {
+
+    height: 84vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: beige;
+}
+
+.tattooRoster {
+
+    /* display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(5em, 1fr));
+    gap: 1em; */
+    display: flex;
+    flex-wrap: wrap;
+
+
+
+}
