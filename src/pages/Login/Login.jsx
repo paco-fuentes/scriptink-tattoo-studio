@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { userLogin } from "../../services/apiCalls";
+import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
@@ -13,6 +14,11 @@ export const Login = () => {
     password: "",
   });
 
+  const [userError, setUserError] = useState({
+    emailError: '',
+    passwordError: ''
+  })
+
   const [msgError, setMsgError] = useState('');
 
   const functionHandler = (e) => {
@@ -22,10 +28,23 @@ export const Login = () => {
     }));
   };
 
+  const errorCheck = (e) => {
+
+    let error = "";
+
+    error = validator(e.target.name, e.target.value);
+
+    setUserError((prevState) => ({
+      ...prevState,
+      [e.target.name + 'Error']: error,
+    }));
+  }
+
   //   useEffect(()=>{
   //     console.log(credenciales);
   //   },[credenciales]);
 
+  // falta aqui el ... test para ver si funciona el boton de submit (register) en el logme
   const logMe = () => {
 
     userLogin(credenciales)
@@ -53,22 +72,23 @@ export const Login = () => {
   return (
     <div className="loginDesign">
       <CustomInput
-        design={"inputDesign"}
+        design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
         type={"email"}
         name={"email"}
         placeholder={""}
         // value={}
         functionProp={functionHandler}
-      // onBlur={}
+        functionBlur={errorCheck}
       />
+      <div className='errorMsg'>{userError.emailError}</div>
       <CustomInput
-        design={"inputDesign"}
+        design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
         type={"password"}
         name={"password"}
         placeholder={""}
         // value={}
         functionProp={functionHandler}
-      // onBlur={}
+        functionBlur={errorCheck}
       />
       <div className='buttonSubmit' onClick={logMe}>Log Me!</div>
       <div>{msgError}</div>

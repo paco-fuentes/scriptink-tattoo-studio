@@ -11,8 +11,8 @@ export const Gallery = () => {
         if (tattoos.length === 0) {
             bringTattoos()
                 .then((tattoos) => {
-                    // console.log(tattoos);
-                    setTattoos(tattoos.data.data);
+                    console.log(tattoos);
+                    setTattoos(tattoos.data.allTattoos);
                 })
                 .catch((error) => console.log(error));
         }

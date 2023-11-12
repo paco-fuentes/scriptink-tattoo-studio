@@ -13,13 +13,18 @@ export const Header = () => {
                 title={"Home"}
             />
             <LinkButton
-                path={"/login"}
-                title={"Login"}
-            />
-            <LinkButton
                 path={"/gallery"}
                 title={"Gallery"}
             />
+            <LinkButton
+                path={"/resgister"}
+                title={"Register"}
+            />
+            <LinkButton
+                path={"/login"}
+                title={"Login"}
+            />
+            
         </div>
     )
 }
