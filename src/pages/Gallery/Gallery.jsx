@@ -10,20 +10,19 @@ export const Gallery = () => {
     useEffect(() => {
         if (tattoos.length === 0) {
             bringTattoos()
-                .then((results) => {
-                    console.log('hola desde el then de tattoos');
-                    setTattoos(results.data);
+                .then((tattoos) => {
+                    // console.log(tattoos);
+                    setTattoos(tattoos.data.data);
                 })
                 .catch((error) => console.log(error));
         }
     }, [tattoos]);
 
-    console.log(tattoos);
+   
 
     const tellMe = (argumento) => {
         console.log(argumento)
     }
-
 
     return (
         <div className='homeDesign'>

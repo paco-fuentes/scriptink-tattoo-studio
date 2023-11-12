@@ -15,9 +15,9 @@ export const TattooCard = ({name, image, status, location, selected, selectFunct
      }
 
      return (
-        <div className={`characterCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
+        <div className={`tattooCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
             <div>{name}</div>
-            <div><img className='avatar' src={image} alt={name}/></div>
+            <div><img className='tattoo' src={image} alt={name}/></div>
             <div>{status}</div>
             <div>{location}</div>
         </div>
