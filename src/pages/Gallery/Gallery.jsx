@@ -18,7 +18,7 @@ export const Gallery = () => {
         }
     }, [tattoos]);
 
-   
+
 
     const tellMe = (argumento) => {
         console.log(argumento)
@@ -53,19 +53,3 @@ export const Gallery = () => {
         </div>
     )
 };
-
-
-// <Container>
-//     <div>
-//         {tattoos.map((tattoo) => {
-//             return (
-//                 <div key={tattoo.id}>
-//                     {/* {tattoo.name} */}
-//                     <img src={tattoo.img_url} />
-//                 </div>
-
-//             );
-//         })}
-//     </div>ƒ
-// </Container>
-
