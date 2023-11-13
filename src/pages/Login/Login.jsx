@@ -4,6 +4,7 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { userLogin } from "../../services/apiCalls";
 import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 
 export const Login = () => {
 
@@ -53,10 +54,20 @@ export const Login = () => {
           // console.log('resultado ----> ' + resultado.data.token)
           //Aqui guardaría el token........
           // console.log(resultado.data.role)
-          if (resultado.data.role) {
-            localStorage.setItem("userToken", (resultado.data.token))
+          // if (resultado.data.role) {
+          //   localStorage.setItem("userToken", (resultado.data.token))
+          // }
+          localStorage.setItem("token", (resultado.data.token));
+          const logToken = localStorage.getItem("token");
+          console.log(logToken);
+
+          let decToken = {};
+          if (logToken) {
+            decToken = jwtDecode(logToken)
+            localStorage.setItem("role", decToken.role);
           }
-          //Una vez guardado el token....nos vamos a home....
+
+          //Una vez guardado el token....nos vamos a home.... pero con el role del token vamos a donde haga falta
           setTimeout(() => {
             navigate("/");
           }, 500);
