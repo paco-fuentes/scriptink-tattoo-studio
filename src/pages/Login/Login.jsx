@@ -6,9 +6,16 @@ import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 
+//Importo Rdx
+
+import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
+import { login } from "../userSlice";
+
 export const Login = () => {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const [credenciales, setCredenciales] = useState({
     email: "",
@@ -57,6 +64,10 @@ export const Login = () => {
           // if (resultado.data.role) {
           //   localStorage.setItem("userToken", (resultado.data.token))
           // }
+
+          //Aqui guardaría el token........en RDXXX
+          dispatch(login({ credentials: resultado.data.token }))
+
           localStorage.setItem("token", (resultado.data.token));
           const logToken = localStorage.getItem("token");
           console.log(logToken);
