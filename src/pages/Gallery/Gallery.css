@@ -14,3 +14,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.imageTattoo {
+  height: 8em;
+}
