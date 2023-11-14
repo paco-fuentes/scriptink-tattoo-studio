@@ -66,17 +66,19 @@ export const Login = () => {
           // }
 
           //Aqui guardaría el token........en RDXXX
-          dispatch(login({ credentials: resultado.data.token }))
+          dispatch(login({ credentials: resultado.data }))
+          
+          // localStorage.setItem("token", (resultado.data.token));
+          // const logToken = localStorage.getItem("token");
+          // console.log(logToken);
 
-          localStorage.setItem("token", (resultado.data.token));
-          const logToken = localStorage.getItem("token");
-          console.log(logToken);
-
-          let decToken = {};
-          if (logToken) {
-            decToken = jwtDecode(logToken)
-            localStorage.setItem("role", decToken.role);
-          }
+          // let decToken = {};
+          // if (logToken) {
+          //   decToken = jwtDecode(logToken)
+          //   localStorage.setItem("role", decToken.role);
+          //   localStorage.setItem("email", decToken.email);
+          //   // localStorage.setItem("username", decToken.user);
+          // }
 
           //Una vez guardado el token....nos vamos a home.... pero con el role del token vamos a donde haga falta
           setTimeout(() => {

@@ -12,6 +12,7 @@ export const Header = () => {
     const dispatch = useDispatch();
 
     const rdxCredentials = useSelector(userData);
+    console.log(!rdxCredentials);
 
     const logOutMe = () => {
 
@@ -24,6 +25,7 @@ export const Header = () => {
     return (
         <div className="headerDesign">
             <LinkButton path={"/"} title={"Home"} />
+            <LinkButton path={"/gallery"} title={"Gallery"} />
 
             {!rdxCredentials?.credentials.token ? (
                 <>
@@ -32,7 +34,7 @@ export const Header = () => {
                 </>
             ) : (
                 <>
-                    <LinkButton path={"/profile"} title={rdxCredentials.credentials.firstName} />
+                    <LinkButton path={"/profile"} title={"Profile, username"} />
                     <div onClick={logOutMe}>
                         <LinkButton path={"/"} title={"log out"} />
                     </div>
@@ -42,6 +44,8 @@ export const Header = () => {
     );
 };
 
+
+{/* <LinkButton path={"/profile"} title={rdxCredentials.credentials.email} /> */}
 
 // export const Header = () => {
 //     return (
