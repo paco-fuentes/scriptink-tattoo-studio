@@ -1,3 +1,5 @@
+
+
 .profileDesign {
 
     height: 84vh;
@@ -8,5 +10,54 @@
     justify-content: center;
     align-items: center;
 
-    background-color: purple;
+    background-color: beige;
+}
+
+.editDesign {
+
+    height: 2em;
+    width: 10em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: orange;
+
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 1em;
+    transition: 0.3s;
+}
+
+.editDesign:hover {
+
+    transition: 0.3s;
+    background-color: darkorange;
+}
+
+.sendDesign {
+    height: 2em;
+    width: 10em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 1em;
+    transition: 0.3s;
+}
+
+.sendDesign:hover {
+
+    transition: 0.3s;
+    background-color: crimson;
 }

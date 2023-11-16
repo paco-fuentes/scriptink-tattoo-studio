@@ -19,3 +19,11 @@ export const userProfile = async (token) => {
     Authorization:`Bearer ${token}`}});
 };
 
+export const updateUserProfile = async (token, body) => {
+  return await axios.put(`http://localhost:4000/user/profile`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
