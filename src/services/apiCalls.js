@@ -12,7 +12,10 @@ export const userRegister = async (body) => {
   return await axios.post(`http://localhost:4000/user/register`, body);
 };
 
-export const userProfile = async (body) => {
-  return await axios.get(`http://localhost:4000/user/profile`);
+export const userProfile = async (token) => {
+  // console.log('Token en userProfile:', token);
+  return await axios.get(`http://localhost:4000/user/profile`, 
+  {headers:{
+    Authorization:`Bearer ${token}`}});
 };
 

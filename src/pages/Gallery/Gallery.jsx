@@ -4,14 +4,16 @@ import { bringTattoos } from "../../services/apiCalls";
 import { TattooCard } from "../../common/TattooCard/TattooCard";
 import { Container, Row, Col } from "react-bootstrap";
 
+
+
 export const Gallery = () => {
     const [tattoos, setTattoos] = useState([]);
-
+    console.log(bringTattoos);
     useEffect(() => {
         if (tattoos.length === 0) {
             bringTattoos()
                 .then((tattoos) => {
-                    console.log(tattoos);
+                    // console.log(tattoos);
                     setTattoos(tattoos.data.allTattoos);
                 })
                 .catch((error) => console.log(error));
@@ -21,7 +23,7 @@ export const Gallery = () => {
 
 
     const tellMe = (argumento) => {
-        console.log(argumento)
+        console.log("argumento ---> " + argumento)
     }
 
     return (

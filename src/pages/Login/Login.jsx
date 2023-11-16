@@ -67,6 +67,7 @@ export const Login = () => {
 
           //Aqui guardaría el token........en RDXXX
           dispatch(login({ credentials: resultado.data }))
+          // console.log(resultado.data.token);
           
           // localStorage.setItem("token", (resultado.data.token));
           // const logToken = localStorage.getItem("token");

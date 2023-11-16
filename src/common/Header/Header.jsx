@@ -43,7 +43,8 @@ export const Header = () => {
         </div>
     );
 };
-
+// const token = rdxCredentials?.credentials.token;
+// export {token}
 
 {/* <LinkButton path={"/profile"} title={rdxCredentials.credentials.email} /> */}
 
