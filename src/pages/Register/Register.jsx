@@ -81,7 +81,7 @@ export const Register = () => {
         design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
         type={"email"}
         name={"email"}
-        placeholder={""}
+        placeholder={"email@email.email"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -91,7 +91,7 @@ export const Register = () => {
         design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
         type={"password"}
         name={"password"}
-        placeholder={""}
+        placeholder={"password"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -101,7 +101,7 @@ export const Register = () => {
         design={`inputDesign ${userError.nameError !== "" ? 'inputDesignError' : ''}`}
         type={"text"}
         name={"name"}
-        placeholder={""}
+        placeholder={"name"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -111,7 +111,7 @@ export const Register = () => {
         design={`inputDesign ${userError.phoneError !== "" ? 'inputDesignError' : ''}`}
         type={"text"}
         name={"phone"}
-        placeholder={""}
+        placeholder={"phone"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}

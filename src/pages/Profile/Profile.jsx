@@ -126,7 +126,6 @@ export const Profile = () => {
         functionProp={(e) => functionHandler(e, "firstname")}
         functionBlur={errorCheck}
       />
-
       <CustomInput
         disabled={isEnabled}
         design={`inputDesign ${profileError.lastnameError !== "" ? "inputDesignError" : ""

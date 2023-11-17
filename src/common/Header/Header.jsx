@@ -35,6 +35,8 @@ export const Header = () => {
             ) : (
                 <>
                     <LinkButton path={"/profile"} title={rdxCredentials.credentials.username} />
+                    <LinkButton path={"/createappointment"} title={'Create appointment'} />
+                    
                     <div onClick={logOutMe}>
                         <LinkButton path={"/"} title={"log out"} />
                     </div>
@@ -46,7 +48,7 @@ export const Header = () => {
 // const token = rdxCredentials?.credentials.token;
 // export {token}
 
-{/* <LinkButton path={"/profile"} title={rdxCredentials.credentials.email} /> */}
+// {/<LinkButton path={"/profile"} title={rdxCredentials.credentials.email} />}
 
 // export const Header = () => {
 //     return (
