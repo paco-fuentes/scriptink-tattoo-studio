@@ -12,7 +12,6 @@ import { updateUserProfile, userProfile } from "../../services/apiCalls";
 export const Profile = () => {
   // Instancio a RDX en modo lectura
   const datosRdxUser = useSelector(userData);
-
   const token = datosRdxUser.credentials.token;
   const [userProfileData, setUserProfileData] = useState(null);
 

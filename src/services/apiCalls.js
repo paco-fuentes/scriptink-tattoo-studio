@@ -37,7 +37,7 @@ export const userCreateAppointment = async (token, body) => {
 };
 
 export const userGetAppointments = async (token) => {
-  return await axios.get(`http://localhost:4000/user/myappointments`, {
+  return await axios.get(`http://localhost:4000/user/myappointments/`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
