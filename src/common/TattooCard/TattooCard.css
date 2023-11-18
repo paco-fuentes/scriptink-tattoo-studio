@@ -1,6 +1,6 @@
 .tattooCardDesign {
-  height: 12em;
-  width: 10em;
+  height: 16em;
+  width: 14em;
 
   border-radius: 1em;
 
@@ -27,6 +27,6 @@
 }
 
 .tattoo {
-  height: 6em;
-  width: 6em;
+  height: 10em;
+  width: 10em;
 }

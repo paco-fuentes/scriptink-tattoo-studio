@@ -100,7 +100,7 @@ export const Login = () => {
         design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
         type={"email"}
         name={"email"}
-        placeholder={""}
+        placeholder={"email"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -110,7 +110,7 @@ export const Login = () => {
         design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
         type={"password"}
         name={"password"}
-        placeholder={""}
+        placeholder={"password"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}

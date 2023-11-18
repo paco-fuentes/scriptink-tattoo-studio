@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import "./CreateAppointment.css";
 
 import { CustomInput } from "../../common/CustomInput/CustomInput";
@@ -10,8 +11,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { userData } from "../../pages/userSlice";
 
 
-
 export const CreateAppointment = () => {
+
+  const { id } = useParams();
+  console.log(id);
 
   // const dispatch = useDispatch();
   const rdxCredentials = useSelector(userData);
@@ -19,7 +22,7 @@ export const CreateAppointment = () => {
   // console.log(token);
 
   const [appointment, setAppointment] = useState({
-    tattoo_id: '',
+    tattoo_id: `${id}`,
     observations: '',
     date: ''
   })
@@ -47,31 +50,16 @@ export const CreateAppointment = () => {
     }));
   }
 
-  // test para ver si funciona el boton de submit
   const Submit = () => {
-
-    // for (let test1 in appointment) {
-    //   if (appointment[test1] === "") {
-    //     return;
-    //   }
-
-    // }
-
-    // for (let test in appointmentError) {
-    //   if (appointmentError[test] !== "") {
-    //     return;
-    //   }
-    // }
-
     userCreateAppointment(token, appointment)
       .then(
         resultado => {
-          //si todo ha ido bien, redirigiremos a login...
+          //si todo ha ido bien, redirigiremos a myappointments...
           console.log(resultado.data);
           const { message } = resultado.data;
           setMessage(message);
           setTimeout(() => {
-            // navigate("/login");
+            // navigate("/myappointments");
           }, 500)
         }
       )
@@ -80,7 +68,7 @@ export const CreateAppointment = () => {
 
   return (
     <div className="createAppointmentDesign">
-      <CustomInput
+      {/* <CustomInput
         design={`inputDesign ${appointmentError.tattoo_idError !== "" ? 'inputDesignError' : ''}`}
         type={""}
         name={"tattoo_id"}
@@ -89,7 +77,7 @@ export const CreateAppointment = () => {
         functionProp={functionHandler}
         functionBlur={errorCheck}
       />
-      <div className='errorMsg'>{appointmentError.tattoo_idError}</div>
+      <div className='errorMsg'>{appointmentError.tattoo_idError}</div> */}
       <CustomInput
         design={`inputDesign ${appointmentError.observationsError !== "" ? 'inputDesignError' : ''}`}
         type={""}

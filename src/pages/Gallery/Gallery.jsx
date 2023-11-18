@@ -5,26 +5,24 @@ import { TattooCard } from "../../common/TattooCard/TattooCard";
 import { Container, Row, Col } from "react-bootstrap";
 
 
-
 export const Gallery = () => {
     const [tattoos, setTattoos] = useState([]);
-    console.log(bringTattoos);
+
     useEffect(() => {
         if (tattoos.length === 0) {
             bringTattoos()
                 .then((tattoos) => {
-                    // console.log(tattoos);
                     setTattoos(tattoos.data.allTattoos);
                 })
                 .catch((error) => console.log(error));
         }
     }, [tattoos]);
 
+    // console.log(tattoos);
 
-
-    const tellMe = (argumento) => {
-        console.log("argumento ---> " + argumento)
-    }
+    // const tellMe = (argumento) => {
+    //     // console.log("argumento ---> " + argumento)
+    // }
 
     return (
         <div className='galleryDesign'>
@@ -38,10 +36,13 @@ export const Gallery = () => {
                                         <Col sm={12} lg={6} xl={2} xxl={2} key={tattoo.id}>
                                             <TattooCard
                                                 key={tattoo.id}
-                                                name={tattoo.title}
+                                                id={tattoo.id}
+                                                title={tattoo.title}
                                                 image={tattoo.img_url}
+                                                description={tattoo.description}
+                                                price={tattoo.price}
                                                 selected={"selectedCard"}
-                                                selectFunction={() => tellMe(tattoo)}
+                                            // selectFunction={() => tellMe(tattoo)}
                                             />
                                         </Col>
                                     );
@@ -56,23 +57,3 @@ export const Gallery = () => {
         </div>
     )
 };
-
-
-// <div className='tattooRoster'>
-// {
-//     tattoos.map(
-//         tattoo => {
-//             return (
-//                 <TattooCard
-//                     key={tattoo.id}
-//                     name={tattoo.title}
-//                     image={tattoo.img_url}
-//                     selected={"selectedCard"}
-//                     selectFunction={() => tellMe(tattoo)}
-//                 />
-//             )
-//         }
-//     )
-// }
-// </div>
-

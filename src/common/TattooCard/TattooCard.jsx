@@ -1,25 +1,32 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './TattooCard.css'
 
-export const TattooCard = ({name, image, status, location, selected, selectFunction}) => {
+export const TattooCard = ({ id, title, image, description, price, selected, SubmitId, selectFunction }) => {
 
-     const [change, setChange] = useState(true);
+   // const history = useHistory();
+   const [change, setChange] = useState(true);
+   const navigate = useNavigate();
+   const callSelectClick = () => {
+      setChange(!change)
+      //   selectFunction()
+   }
 
-     const callSelectClick = () => {
+   const SubmitIdToCreateAppointment = () => {
+      console.log('id del tattoo --> ' + id);
+      navigate(`/createappointment/${id}`)
+   }
 
-        setChange(!change)
-
-        selectFunction()
-
-     }
-
-     return (
-        <div className={`tattooCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
-            <div>{name}</div>
-            <div><img className='tattoo' src={image} alt={name}/></div>
-            <div>{status}</div>
-            <div>{location}</div>
-        </div>
-     )
+   return (
+      <div className={`tattooCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
+         {/* <div>{id}</div> */}
+         <div>{title}</div>
+         <div><img className='tattoo' src={image} alt={title} /></div>
+         <div>{description}</div>
+         <div>{price + '€'}</div>
+         <div className='buttonSubmit' onClick={SubmitIdToCreateAppointment}>Submit</div>
+      </div>
+   )
 }

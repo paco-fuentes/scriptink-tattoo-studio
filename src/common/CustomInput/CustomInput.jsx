@@ -14,6 +14,5 @@ export const CustomInput = ({ disabled, design, type, name, placeholder, value, 
             onChange={(e) => functionProp(e)}
             onBlur={(e) => functionBlur(e)}
         />
-
     )
 }

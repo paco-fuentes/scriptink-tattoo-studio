@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export const bringTattoos = async () => {
   return await axios.get(`http://localhost:4000/user/alltattoos`);
 };
@@ -29,6 +30,14 @@ export const updateUserProfile = async (token, body) => {
 
 export const userCreateAppointment = async (token, body) => {
   return await axios.post(`http://localhost:4000/user/appointment`, body, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+export const userGetAppointments = async (token) => {
+  return await axios.get(`http://localhost:4000/user/myappointments`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
