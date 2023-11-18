@@ -6,10 +6,14 @@ import { userGetAppointments } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 
+import { useNavigate } from "react-router-dom";
+
 export const MyAppointments = () => {
     // Instancio a RDX en modo lectura
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
+
+    const navigate = useNavigate();
 
     const [appointments, setAppointments] = useState([]);
 
@@ -24,24 +28,23 @@ export const MyAppointments = () => {
         }
     }, [appointments]);
 
-    // console.log(appointments);
-
     return (
-        <div className="myappointmentsDesign">
+        <div className="myAppointmentsDesign">
             {appointments.length > 0 ? (
                 appointments.map((appointment) => (
                     <div key={appointment.id}>
-                        <p><strong>id: {appointment.id|| "No date available"}</strong></p>
-                        <p>Date: {appointment.date || "No date available"}</p>
-                        <p>appointment_time: {appointment.appointment_time || "No date available"}</p>
+                        <p><strong>Cita con el id: {appointment.id|| "No date available"}</strong></p>
+                        <p>Cita con fecha: {appointment.date || "No date available"}</p>
+                        <p>Mañana o Tarde: {appointment.appointment_time || "No date available"}</p>
                         <p>created_at: {appointment.created_at || "No date available"}</p>
-                        <p>isActive: {appointment.isActive || "No date available"}</p>
-                        <p>observations: {appointment.observations || "No date available"}</p>
-                        <p>tattoo_artist_id: {appointment.tattoo_artist_id|| "No date available"}</p>
-                        <p>tattoo_id: {appointment.tattoo_id || "No date available"}</p>
-                        <p>updated_at: {appointment.updated_at || "No date available"}</p>
-                        <p>user_id: {appointment.user_id|| "No date available"}</p>
-                        {/* Render other appointment properties as needed */}
+                        <p>Estado de la cita: {appointment.is_active ? "Cita activa" : "Cita terminada" || "No date available"}</p>
+                        <p>Observaciones: {appointment.observations || "No date available"}</p>
+                        <p>Artista: {appointment.tattoo_artist_id|| "No date available"}</p>
+                        <p>Tatuaje: {appointment.tattoo_id || "No date available"}</p>
+                        <p>Modificado: {appointment.updated_at || "No date available"}</p>
+                        <p>Usuario actual: {appointment.user_id|| "No date available"}</p>
+
+                        <div className='buttonSubmit' onClick={() => {navigate(`/myappointments/${appointment.id}`)}}>Edit Appointment</div>
                     </div>
                 ))
             ) : (

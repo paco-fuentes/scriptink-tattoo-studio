@@ -1,9 +1,6 @@
-
 .homeDesign {
+  height: 84vh;
+  width: 100vw;
 
-    height: 84vh;
-    width: 100vw;
-
-    background-color: beige;
+  background-color: beige;
 }
-
