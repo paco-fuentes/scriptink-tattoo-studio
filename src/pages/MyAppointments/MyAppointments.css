@@ -20,14 +20,16 @@
 
 .appointmentsCards{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  margin:0.5em;
   align-items: center;
   flex-direction: row;
   background-color: rgb(0, 0, 0);
   border-color: white;
   border-width: 0.2;
   border-style: solid;
-  width: 45rem;
+  width: 50em;
+  height: 6em;
 }
 
 .buttonSubmitAppointment {

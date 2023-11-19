@@ -8,7 +8,7 @@ import { userGetAppointmentId, userUpdateAppointmentId } from '../../services/ap
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CustomInput } from '../../common/CustomInput/CustomInput';
 
 export const EditAppointment = () => {
@@ -16,11 +16,13 @@ export const EditAppointment = () => {
     const token = datosRdxUser.credentials.token;
     const { id } = useParams();
 
+    const navigate = useNavigate();
+
     const [appointment, setAppointment] = useState({
-        date: '',
+        date: null,
     });
 
-    const [isDateEditable, setIsDateEditable] = useState(false);
+    const [dateEdit, setdateEdit] = useState(false);
 
     useEffect(() => {
         const getAppointmentData = async () => {
@@ -40,40 +42,46 @@ export const EditAppointment = () => {
     };
 
     const handleEditToggle = () => {
-        setIsDateEditable(!isDateEditable);
+        setdateEdit(!dateEdit);
     };
 
     const handleSaveChanges = async () => {
         try {
             await userUpdateAppointmentId(token, id, { date: appointment.date });
-            // Puedes agregar lógica adicional aquí después de guardar los cambios
+
             console.log('Cambios guardados exitosamente');
         } catch (error) {
-            console.error('Error al guardar los cambios:', error);
+            console.error(error);
         }
     };
 
     return (
-        <div className="myAppointmentsDesign">
+        <div className="editAppointmentDesign">
             <div>
+                <p><strong>Artista: {appointment.tattooArtist?.firstname || "No date available"}</strong></p>
+                <p>Tatuaje: {appointment.tattoo?.title || "No date available"}</p>
+                <p>Precio: {`${appointment.tattoo?.price}€` || "No date available"}</p>
+                <p>Observaciones: {appointment.observations || "No date available"}</p>
+                <img src={appointment.tattoo?.img_url || "Fecha no disponible"} width="200" />
+                <p><strong>Modificar fecha: </strong></p>
                 <CustomInput
-                    disabled={!isDateEditable}
-                    design="your-input-styles"
+                    disabled={!dateEdit}
+                    design=""
                     type="text"
                     name="date"
                     placeholder="Enter date"
-                    value={appointment.date}
+                    value={appointment.date || ''}
                     functionProp={handleDateChange}
-                    functionBlur={() => {}}
+                    functionBlur={() => { }}
                 />
-                {/* Botón para habilitar/deshabilitar la edición */}
-                <button onClick={handleEditToggle}>
-                    {isDateEditable ? 'Disable Editing' : 'Enable Editing'}
+                <div className='buttonPanel'>
+                <button className="buttonSubmitEdit"  onClick={handleEditToggle}>
+                    {dateEdit ? 'Disable Editing' : 'Enable Editing'}
                 </button>
-                {/* Botón para guardar cambios */}
-                <button onClick={handleSaveChanges} disabled={!isDateEditable}>
+                <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
                     Save Changes
                 </button>
+                </div>
             </div>
         </div>
     );

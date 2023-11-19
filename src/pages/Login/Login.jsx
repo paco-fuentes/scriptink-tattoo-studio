@@ -76,8 +76,8 @@ export const Login = () => {
   }
 
   return (
-    <div className="loginDesign">
-      <CustomInput
+    <div className="loginDesign bg-container-log">
+      <CustomInput className="inputDesignZ"
         design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
         type={"email"}
         name={"email"}
@@ -87,7 +87,7 @@ export const Login = () => {
         functionBlur={errorCheck}
       />
       <div className='errorMsg'>{userError.emailError}</div>
-      <CustomInput
+      <CustomInput className="inputDesignZ"
         design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
         type={"password"}
         name={"password"}

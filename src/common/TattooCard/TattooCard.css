@@ -23,7 +23,6 @@
 }
 
 .selectedCard {
-  /* background-color: red; */
   .tattoo {
     height: 50vh;
     width: 50vw;
@@ -31,6 +30,7 @@
     border-radius: 0.3em;
     border-style:solid;
     border-color: black;
+    z-index: 2;
   }
 }
 

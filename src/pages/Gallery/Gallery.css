@@ -16,10 +16,6 @@
   font-weight: lighter;
   font-size: 1rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.tattooRoster {
-  display: flex;
   flex-wrap: wrap;
 }
 
