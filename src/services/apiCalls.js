@@ -74,3 +74,11 @@ export const bringAllUsers = async (token) => {
     },
   });
 };
+
+export const deleteUserById = async (token, id) => {
+  return await axios.delete(`http://localhost:4000/staff/deleteuser/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

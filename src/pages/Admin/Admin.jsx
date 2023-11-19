@@ -2,14 +2,25 @@ import React, { useEffect, useState } from 'react';
 import './Admin.css'
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { bringAllUsers } from '../../services/apiCalls';
+import { bringAllUsers, deleteUserById } from '../../services/apiCalls';
 
 export const Admin = () => {
-    // Instancio a RDX en modo lectura
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
 
     const [getUsers, setGetUsers] = useState([]);
+
+    const deleteUserId = async (userId) => {
+        try {
+            await deleteUserById(token, userId);
+            // actualiar la lista de usuarios ...
+            const response = await bringAllUsers(token);
+            console.log("Response data:", response.data);
+            setGetUsers(response.data.data);
+        } catch (error) {
+            console.error("Error deleting user:", error);
+        }
+    };
 
     useEffect(() => {
         if (getUsers.length === 0) {
@@ -20,14 +31,18 @@ export const Admin = () => {
                 })
                 .catch((error) => console.log(error));
         }
-    }, [getUsers]);
+    }, [getUsers, token]);
+
+    const selectedUser = (userId) => {
+        deleteUserId(userId);
+    };
 
     return (
         <div>
             {getUsers.length > 0 ? (
                 getUsers.map((getUser) => (
-                    <div>
-                        <div key={getUser.id}>
+                    <div key={getUser.id}>
+                        <div>
                             <p>id: {getUser.id}</p>
                             <p>Nombre: {getUser.firstname}</p>
                             <p>Apellido: {getUser.lastname}</p>
@@ -37,12 +52,12 @@ export const Admin = () => {
                             <p>Provilegios: {getUser.role}</p>
                             <p>Activo: {getUser.is_active ? "Sí" : "No"}</p>
 
-                            {/* <div className='buttonSubmit' onClick={() => {navigate(`/myappointments/${appointment.id}`)}}>Edit Appointment</div> */}
+                            <div className='buttonSubmit' onClick={() => { selectedUser(getUser.id) }}>Borrar Usuario</div>
                         </div>
                     </div>
                 ))
             ) : (
-                getUsers.length === 0 && <p>Loading appointments...</p>
+                getUsers.length === 0 && <p>Spinner de usuarios...</p>
             )}
         </div>
     );
