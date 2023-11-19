@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+// guest
 export const bringTattoos = async () => {
   return await axios.get(`http://localhost:4000/user/alltattoos`);
 };
@@ -12,6 +14,8 @@ export const userRegister = async (body) => {
   return await axios.post(`http://localhost:4000/user/register`, body);
 };
 
+
+// user
 export const userProfile = async (token) => {
   // console.log('Token en userProfile:', token);
   return await axios.get(`http://localhost:4000/user/profile`, {
@@ -61,3 +65,12 @@ export const userUpdateAppointmentId = async (token, id, body) => {
   });
 };
 
+
+// admin
+export const bringAllUsers = async (token) => {
+  return await axios.get(`http://localhost:4000/staff/getallusers`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { userLogin } from "../../services/apiCalls";
 import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
-// import { jwtDecode } from "jwt-decode";
 
-//Importo Rdx
-
-import { useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
+//useDispatch es necesario para emitir acciones
+import { useDispatch } from "react-redux";
 import { login } from "../userSlice";
 
 export const Login = () => {
-
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   const [credenciales, setCredenciales] = useState({
@@ -39,7 +35,6 @@ export const Login = () => {
   const errorCheck = (e) => {
 
     let error = "";
-
     error = validator(e.target.name, e.target.value);
 
     setUserError((prevState) => ({
@@ -48,42 +43,29 @@ export const Login = () => {
     }));
   }
 
-  //   useEffect(()=>{
-  //     console.log(credenciales);
-  //   },[credenciales]);
-
-  // falta aqui el ... test para ver si funciona el boton de submit (register) en el logme
   const logMe = () => {
-
     userLogin(credenciales)
       .then(
         resultado => {
-          // console.log('resultado ----> ' + resultado.data.token)
-          //Aqui guardaría el token........
-          // console.log(resultado.data.role)
-          // if (resultado.data.role) {
-          //   localStorage.setItem("userToken", (resultado.data.token))
-          // }
-
-          //Aqui guardaría el token........en RDXXX
+          // dispatch token a redux
           dispatch(login({ credentials: resultado.data }))
-          // console.log(resultado.data.role);
-          
-          // localStorage.setItem("token", (resultado.data.token));
-          // const logToken = localStorage.getItem("token");
-          // console.log(logToken);
-
-          // let decToken = {};
-          // if (logToken) {
-          //   decToken = jwtDecode(logToken)
-          //   localStorage.setItem("role", decToken.role);
-          //   localStorage.setItem("email", decToken.email);
-          //   // localStorage.setItem("username", decToken.user);
-          // }
-
-          //Una vez guardado el token....nos vamos a home.... pero con el role del token vamos a donde haga falta
+          const currentRole = resultado.data.role;
+          console.log(currentRole)
           setTimeout(() => {
-            navigate("/");
+            switch (currentRole) {
+              case "user":
+                navigate("/");
+                break;
+              case "worker":
+                navigate("/worker");
+                break;
+              case "admin":
+                navigate("/admin");
+                break;
+
+              default:
+                break;
+            }
           }, 500);
         }
       )
@@ -91,7 +73,6 @@ export const Login = () => {
         console.log(error)
         setMsgError(error.message);
       });
-
   }
 
   return (

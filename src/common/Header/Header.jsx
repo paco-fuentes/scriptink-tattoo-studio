@@ -1,19 +1,15 @@
 
-import React from 'react'
 import './Header.css'
-import { LinkButton } from '../LinkButton/LinkButton'
-
-//REDUX
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { logout, userData } from "../../pages/userSlice";
-import { useNavigate } from 'react-router-dom';
+import { LinkButton } from '../LinkButton/LinkButton'
 
 export const Header = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const rdxCredentials = useSelector(userData);
-    console.log(rdxCredentials.credentials.role);
 
     const logOutMe = () => {
         dispatch(logout({ credentials: "" }))
@@ -39,27 +35,22 @@ export const Header = () => {
                         <LinkButton path={"/"} title={"log out"} />
                     </div>
                 </>
-            ))
-            || (rdxCredentials.credentials.role === "worker" && (
+            )) || (rdxCredentials.credentials.role === "worker" && (
                 <>
                     <LinkButton path={"/worker"} title={"Worker"} />
                     <div onClick={logOutMe}>
                         <LinkButton path={"/"} title={"log out"} />
                     </div>
                 </>
-            )
-            )
-            || (rdxCredentials.credentials.role === "admin" && (
+            )) || (rdxCredentials.credentials.role === "admin" && (
                 <>
                     <LinkButton path={"/admin"} title={"Admin"} />
                     <div onClick={logOutMe}>
                         <LinkButton path={"/"} title={"log out"} />
                     </div>
                 </>
-            )
-            )
+            ))
             }
         </div>
     );
 };
-// && rdxCredentials.credentials.role === "user"

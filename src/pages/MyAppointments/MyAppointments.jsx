@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./MyAppointments.css";
+import { useNavigate } from "react-router-dom";
 import { userGetAppointments } from "../../services/apiCalls";
+import "./MyAppointments.css";
 
 // Importo elementos para conexión a RDX en modo lectura
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 
-import { useNavigate } from "react-router-dom";
 
 export const MyAppointments = () => {
     // Instancio a RDX en modo lectura
