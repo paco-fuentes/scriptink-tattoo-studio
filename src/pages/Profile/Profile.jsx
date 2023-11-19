@@ -25,10 +25,9 @@ export const Profile = () => {
         console.error('Error al obtener el perfil:', error);
       }
     };
-  
+
     getProfile();
   }, [token]);
-  
 
   const [profile, setProfile] = useState({
     email: '',
@@ -80,7 +79,6 @@ export const Profile = () => {
 
   const sendData = async () => {
     try {
-      // Crear el cuerpo de la solicitud con los datos actualizados del perfil
       const body = {
         email: profile.email,
         firstname: profile.firstname,
@@ -89,29 +87,14 @@ export const Profile = () => {
         adress: profile.adress
       };
 
-      // Realizar la llamada a la API para actualizar el perfil
       const response = await updateUserProfile(token, body);
-
-      // Manejar la respuesta según sea necesario
-      // console.log('Respuesta al actualizar perfil:', response);
-
-      // Actualizar el estado de isEnabled después de la actualización exitosa
       setIsEnabled(true);
-
-      // Actualizar el estado local con los nuevos datos del perfil
       setUserProfileData(response.data.data);
-
-      // Puedes realizar más acciones aquí, como mostrar un mensaje de éxito, etc.
-
     } catch (error) {
-      console.error('Error al actualizar el perfil:', error);
-      // Aquí puedes manejar errores, mostrar mensajes de error, etc.
+      console.error(`Error al actualizar el perfil ${error}`);
     }
   };
   // const [isEnabled, setIsEnabled] = useState(true);
-
-// console.log('ultimo----> ' + response.data);
-  
   return (
     <div className="profileDesign">
       <CustomInput
@@ -120,7 +103,7 @@ export const Profile = () => {
           }`}
         type={"text"}
         name={"firstname"}
-        placeholder={""}
+        placeholder={"nombre"}
         value={profile.firstname}
         functionProp={(e) => functionHandler(e, "firstname")}
         functionBlur={errorCheck}
@@ -131,7 +114,7 @@ export const Profile = () => {
           }`}
         type={"text"}
         name={"lastname"}
-        placeholder={""}
+        placeholder={"apellido"}
         value={profile.lastname}
         functionProp={(e) => functionHandler(e, "lastname")}
         functionBlur={errorCheck}
@@ -142,7 +125,7 @@ export const Profile = () => {
           }`}
         type={"text"}
         name={"email"}
-        placeholder={""}
+        placeholder={"email"}
         value={profile.email}
         functionProp={(e) => functionHandler(e, "email")}
         functionBlur={errorCheck}
@@ -153,7 +136,7 @@ export const Profile = () => {
           }`}
         type={"text"}
         name={"phone"}
-        placeholder={""}
+        placeholder={"teléfono"}
         value={profile.phone}
         functionProp={(e) => functionHandler(e, "phone")}
         functionBlur={errorCheck}
@@ -164,7 +147,7 @@ export const Profile = () => {
           }`}
         type={"text"}
         name={"adress"}
-        placeholder={""}
+        placeholder={"domicilio"}
         value={profile.adress}
         functionProp={(e) => functionHandler(e, "adress")}
         functionBlur={errorCheck}
@@ -172,7 +155,6 @@ export const Profile = () => {
       {
         isEnabled
           ? (<div className="editDesign" onClick={() => setIsEnabled(!isEnabled)}>Edit</div>)
-
           : (<div className="sendDesign" onClick={() => sendData()}>Send</div>)
       }
     </div>

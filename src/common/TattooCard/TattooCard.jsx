@@ -15,18 +15,17 @@ export const TattooCard = ({ id, title, image, description, price, selected, Sub
    }
 
    const SubmitIdToCreateAppointment = () => {
-      console.log('id del tattoo --> ' + id);
       navigate(`/createappointment/${id}`)
    }
 
    return (
       <div className={`tattooCardDesign ${!change ? selected : ''}`} onClick={callSelectClick}>
          {/* <div>{id}</div> */}
-         <div>{title}</div>
+         <div className='txt'>{title}</div>
          <div><img className='tattoo' src={image} alt={title} /></div>
-         <div>{description}</div>
-         <div>{price + '€'}</div>
-         <div className='buttonSubmit' onClick={SubmitIdToCreateAppointment}>Submit</div>
+         <div className='txt'>{description}</div>
+         <div className='txt'>{price + '€'}</div>
+         <div className='buttonSubmitCard txt' onClick={SubmitIdToCreateAppointment}>Pedir cita</div>
       </div>
    )
 }

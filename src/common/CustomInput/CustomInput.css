@@ -1,18 +1,17 @@
+input{
+  all: none;
+}
 
 .inputDesign {
+  height: 2em;
+  width: 15em;
 
-    height: 2em;
-    width: 15em;
+  border-radius: 0.3em;
+  border: 0.3 solid rgb(0, 0, 0);
 
-    border-radius: 1em;
-    border: 0.5 solid darkcyan;
-
-    margin-bottom: 4em;
+  margin-bottom: 4em;
 }
 
 .inputDesignError {
-
-    border: 0.2em red solid;
-
+  border: 0.2em red solid;
 }
-

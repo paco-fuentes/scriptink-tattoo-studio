@@ -1,13 +1,21 @@
 .galleryDesign {
-  height: 84vh;
+  height: 90vh;
   width: 100vw;
+  padding: 0;
+  margin: 0;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 
-  background-color: beige;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+
+  text-align: center;
+  font-weight: lighter;
+  font-size: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .tattooRoster {
@@ -17,4 +25,10 @@
 
 .imageTattoo {
   height: 8em;
+}
+
+.txt {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

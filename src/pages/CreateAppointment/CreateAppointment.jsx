@@ -59,7 +59,7 @@ export const CreateAppointment = () => {
           const { message } = resultado.data;
           setMessage(message);
           setTimeout(() => {
-            // navigate("/myappointments");
+            navigate("/myappointments");
           }, 500)
         }
       )
@@ -68,21 +68,11 @@ export const CreateAppointment = () => {
 
   return (
     <div className="createAppointmentDesign">
-      {/* <CustomInput
-        design={`inputDesign ${appointmentError.tattoo_idError !== "" ? 'inputDesignError' : ''}`}
-        type={""}
-        name={"tattoo_id"}
-        placeholder={"tattoo_id"}
-        value={''}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{appointmentError.tattoo_idError}</div> */}
       <CustomInput
         design={`inputDesign ${appointmentError.observationsError !== "" ? 'inputDesignError' : ''}`}
         type={""}
         name={"observations"}
-        placeholder={"Observations"}
+        placeholder={"Comentario..."}
         value={''}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -92,7 +82,7 @@ export const CreateAppointment = () => {
         design={`inputDesign ${appointmentError.dateError !== "" ? 'inputDesignError' : ''}`}
         type={""}
         name={"date"}
-        placeholder={"00/00/0000"}
+        placeholder={"DD/MM/AAAA"}
         value={''}
         functionProp={functionHandler}
         functionBlur={errorCheck}

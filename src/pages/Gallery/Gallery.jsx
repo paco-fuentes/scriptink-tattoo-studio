@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Gallery.css";
 import { bringTattoos } from "../../services/apiCalls";
 import { TattooCard } from "../../common/TattooCard/TattooCard";
-import { Container, Row, Col } from "react-bootstrap";
+// import { Container, Row, Col } from "react-bootstrap";
 
 
 export const Gallery = () => {
@@ -25,15 +25,15 @@ export const Gallery = () => {
     // }
 
     return (
-        <div className='galleryDesign'>
+        <div >
             {
                 tattoos.length > 0
                     ? (
-                        <Container>
-                            <Row>
+                        <div>
+                            <div className='galleryDesign tattooRoster'>
                                 {tattoos.map((tattoo) => {
                                     return (
-                                        <Col sm={12} lg={6} xl={2} xxl={2} key={tattoo.id}>
+                                        <div key={tattoo.id} className="">
                                             <TattooCard
                                                 key={tattoo.id}
                                                 id={tattoo.id}
@@ -44,11 +44,11 @@ export const Gallery = () => {
                                                 selected={"selectedCard"}
                                             // selectFunction={() => tellMe(tattoo)}
                                             />
-                                        </Col>
+                                        </div>
                                     );
                                 })}
-                            </Row>
-                        </Container>
+                            </div>
+                        </div>
                     )
                     : (
                         <div>Aún no han venido</div>

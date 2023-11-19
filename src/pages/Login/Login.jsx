@@ -81,7 +81,7 @@ export const Login = () => {
         design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
         type={"email"}
         name={"email"}
-        placeholder={"email"}
+        placeholder={"Enter email"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
@@ -91,12 +91,12 @@ export const Login = () => {
         design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
         type={"password"}
         name={"password"}
-        placeholder={"password"}
+        placeholder={"Enter password"}
         // value={}
         functionProp={functionHandler}
         functionBlur={errorCheck}
       />
-      <div className='buttonSubmit' onClick={logMe}>Log Me!</div>
+      <div className='buttonSubmitLog' onClick={logMe}>Login</div>
       <div>{msgError}</div>
     </div>
   );
