@@ -4,7 +4,7 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { userLogin } from "../../services/apiCalls";
 import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 //Importo Rdx
 
@@ -67,7 +67,7 @@ export const Login = () => {
 
           //Aqui guardaría el token........en RDXXX
           dispatch(login({ credentials: resultado.data }))
-          // console.log(resultado.data.token);
+          // console.log(resultado.data.role);
           
           // localStorage.setItem("token", (resultado.data.token));
           // const logToken = localStorage.getItem("token");
