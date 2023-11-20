@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { userLogin } from "../../services/apiCalls";
+import { userLogin, staffLogin } from "../../services/apiCalls";
 import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
 
@@ -45,59 +45,71 @@ export const Login = () => {
 
   const logMe = () => {
     userLogin(credenciales)
-      .then(
-        resultado => {
-          // dispatch token a redux
-          dispatch(login({ credentials: resultado.data }))
-          const currentRole = resultado.data.role;
-          console.log(currentRole)
-          setTimeout(() => {
-            switch (currentRole) {
-              case "user":
-                navigate("/");
-                break;
-              case "worker":
-                navigate("/worker");
-                break;
-              case "admin":
-                navigate("/admin");
-                break;
-
-              default:
-                break;
-            }
-          }, 500);
-        }
-      )
+      .then(resultado => {
+        loginPath(resultado);
+      })
       .catch(error => {
-        console.log(error)
+        // console.log(error);
         setMsgError(error.message);
+        staffLogin(credenciales)
+          .then(resultado => {
+            loginPath(resultado);
+          })
+          .catch(error => {
+            // console.log(error);
+            setMsgError(error.message);
+          });
       });
-  }
+  };
+
+  const loginPath = resultado => {
+    // dispatch token a redux
+    dispatch(login({ credentials: resultado.data }));
+    const currentRole = resultado.data.role;
+    console.log(currentRole);
+    setTimeout(() => {
+      switch (currentRole) {
+        case "user":
+          navigate("/");
+          break;
+        case "worker":
+          navigate("/worker");
+          break;
+        case "admin":
+          navigate("/admin");
+          break;
+        default:
+          break;
+      }
+    }, 500);
+  };
+
 
   return (
     <div className="loginDesign bg-container-log">
-      <CustomInput className="inputDesignZ"
-        design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
-        type={"email"}
-        name={"email"}
-        placeholder={"Enter email"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{userError.emailError}</div>
-      <CustomInput className="inputDesignZ"
-        design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
-        type={"password"}
-        name={"password"}
-        placeholder={"Enter password"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='buttonSubmitLog' onClick={logMe}>Login</div>
-      <div>{msgError}</div>
+      <div className="logPanel inputDesign2 ">
+        <CustomInput className="logPanel inputDesignZ"
+          design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
+          type={"email"}
+          name={"email"}
+          placeholder={"Enter email"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.emailError}</div>
+        <CustomInput className=" logPanel inputDesignZ"
+          design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
+          type={"password"}
+          name={"password"}
+          placeholder={"Enter password"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='buttonSubmitLog' onClick={logMe}>Login</div>
+        <div>{msgError}</div>
+      </div>
     </div>
   );
 };

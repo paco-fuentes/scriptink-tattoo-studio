@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 // guest
 export const bringTattoos = async () => {
   return await axios.get(`http://localhost:4000/user/alltattoos`);
@@ -10,10 +9,13 @@ export const userLogin = async (body) => {
   return await axios.post(`http://localhost:4000/user/login`, body);
 };
 
+export const staffLogin = async (body) => {
+  return await axios.post(`http://localhost:4000/staff/login`, body);
+};
+
 export const userRegister = async (body) => {
   return await axios.post(`http://localhost:4000/user/register`, body);
 };
-
 
 // user
 export const userProfile = async (token) => {
@@ -58,13 +60,16 @@ export const userGetAppointmentId = async (token, id) => {
 };
 
 export const userUpdateAppointmentId = async (token, id, body) => {
-  return await axios.put(`http://localhost:4000/user/myappointments/${id}`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  return await axios.put(
+    `http://localhost:4000/user/myappointments/${id}`,
+    body,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
-
 
 // admin
 export const bringAllUsers = async (token) => {
@@ -77,6 +82,15 @@ export const bringAllUsers = async (token) => {
 
 export const deleteUserById = async (token, id) => {
   return await axios.delete(`http://localhost:4000/staff/deleteuser/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+// worker
+export const workerGetAppointments = async (token) => {
+  return await axios.get(`http://localhost:4000/staff/myappointments`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
