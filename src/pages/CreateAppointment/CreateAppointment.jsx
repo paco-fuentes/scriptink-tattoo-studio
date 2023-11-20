@@ -80,7 +80,9 @@ export const CreateAppointment = () => {
       <div className='errorMsg'>{appointmentError.observationsError}</div>
       <CustomInput
         design={`inputDesign ${appointmentError.dateError !== "" ? 'inputDesignError' : ''}`}
-        type={""}
+        type={"date"}
+        min="1997-01-01" 
+        max="2030-12-31"
         name={"date"}
         placeholder={"DD/MM/AAAA"}
         value={''}

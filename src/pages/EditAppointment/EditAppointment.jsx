@@ -49,7 +49,7 @@ export const EditAppointment = () => {
         try {
             await userUpdateAppointmentId(token, id, { date: appointment.date });
 
-            console.log('Cambios guardados exitosamente');
+            console.log('Fecha de la cita cambiada');
         } catch (error) {
             console.error(error);
         }
@@ -63,11 +63,11 @@ export const EditAppointment = () => {
                 <p>Precio: {`${appointment.tattoo?.price}€` || "No date available"}</p>
                 <p>Observaciones: {appointment.observations || "No date available"}</p>
                 <img src={appointment.tattoo?.img_url || "Fecha no disponible"} width="200" />
-                <p><strong>Modificar fecha: </strong></p>
+                <p><strong>Modificar fecha actual: {appointment.date}</strong></p>
                 <CustomInput
                     disabled={!dateEdit}
                     design=""
-                    type="text"
+                    type="date"
                     name="date"
                     placeholder="Enter date"
                     value={appointment.date || ''}

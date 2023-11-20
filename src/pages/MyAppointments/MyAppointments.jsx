@@ -20,7 +20,7 @@ export const MyAppointments = () => {
         if (appointments.length === 0) {
             userGetAppointments(token)
                 .then((response) => {
-                    // console.log("Response data:", response.data);
+                    console.log("Response data:", response.data.data);
                     setAppointments(response.data.data);
                 })
                 .catch((error) => console.log(error));
@@ -32,14 +32,14 @@ export const MyAppointments = () => {
             {appointments.length > 0 ? (
                 appointments.map((appointment) => (
                     <div key={appointment.id} className="appointmentsCards">
-                        <p><strong>Cita con el id: {appointment.id || "No date available"}</strong></p>
+                        <p><strong>Cita: {`nº ${appointment.id}` || "No date available"}</strong></p>
                         <p>Cita con fecha: {appointment.date || "No date available"}</p>
                         {/* <p>Mañana o Tarde: {appointment.appointment_time || "No date available"}</p> */}
                         {/* <p>created_at: {appointment.created_at || "No date available"}</p> */}
                         <p>Estado de la cita: {appointment.is_active ? "Cita activa" : "Cita terminada" || "No date available"}</p>
                         {/* <p>Observaciones: {appointment.observations || "No date available"}</p> */}
-                        <p>Artista: {appointment.tattoo_artist_id || "No date available"}</p>
-                        <p>Tatuaje: {appointment.tattoo_id || "No date available"}</p>
+                        <p>Artista: {appointment.tattooArtist.firstname || "No date available"}</p>
+                        <p>Tatuaje: {appointment.tattoo.title || "No date available"}</p>
                         {/* <p>Modificado: {appointment.updated_at || "No date available"}</p> */}
                         {/* <p>Usuario actual: {appointment.user_id|| "No date available"}</p> */}
 
