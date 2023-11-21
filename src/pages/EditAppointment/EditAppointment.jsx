@@ -18,6 +18,11 @@ export const EditAppointment = () => {
 
     const navigate = useNavigate();
 
+    if (!token) {
+        console.log("No estás logeado");
+        navigate("/");
+    }
+
     const [appointment, setAppointment] = useState({
         date: null,
     });
@@ -75,12 +80,12 @@ export const EditAppointment = () => {
                     functionBlur={() => { }}
                 />
                 <div className='buttonPanel'>
-                <button className="buttonSubmitEdit"  onClick={handleEditToggle}>
-                    {dateEdit ? 'Disable Editing' : 'Enable Editing'}
-                </button>
-                <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
-                    Save Changes
-                </button>
+                    <button className="buttonSubmitEdit" onClick={handleEditToggle}>
+                        {dateEdit ? 'Disable Editing' : 'Enable Editing'}
+                    </button>
+                    <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
+                        Save Changes
+                    </button>
                 </div>
             </div>
         </div>

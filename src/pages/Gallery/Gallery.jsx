@@ -18,11 +18,6 @@ export const Gallery = () => {
         }
     }, [tattoos]);
 
-    // console.log(tattoos);
-
-    // const tellMe = (argumento) => {
-    //     // console.log("argumento ---> " + argumento)
-    // }
 
     return (
         <div >

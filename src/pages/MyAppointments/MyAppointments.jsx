@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userGetAppointments } from "../../services/apiCalls";
 import "./MyAppointments.css";
-
-// Importo elementos para conexión a RDX en modo lectura
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 
 export const MyAppointments = () => {
-    // Instancio a RDX en modo lectura
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
-
     const navigate = useNavigate();
+    if (!token) {
+        navigate("/");
+    }
 
     const [appointments, setAppointments] = useState([]);
 
@@ -20,7 +19,7 @@ export const MyAppointments = () => {
         if (appointments.length === 0) {
             userGetAppointments(token)
                 .then((response) => {
-                    console.log("Response data:", response.data.data);
+                    console.log(response.data.data);
                     setAppointments(response.data.data);
                 })
                 .catch((error) => console.log(error));

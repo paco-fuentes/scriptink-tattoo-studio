@@ -3,10 +3,16 @@ import './Admin.css'
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { bringAllUsers, deleteUserById } from '../../services/apiCalls';
+import { useNavigate } from 'react-router-dom';
 
 export const Admin = () => {
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
+    const navigate = useNavigate();
+
+    if (!token) {
+        navigate("/");
+      }
 
     const [getUsers, setGetUsers] = useState([]);
 

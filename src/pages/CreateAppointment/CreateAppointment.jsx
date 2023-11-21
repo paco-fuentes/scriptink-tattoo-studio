@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import "./CreateAppointment.css";
-
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/useful";
 import { userCreateAppointment } from "../../services/apiCalls";
-
-//REDUX
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 
-
 export const CreateAppointment = () => {
-
   const { id } = useParams();
-  console.log(id);
-
-  // const dispatch = useDispatch();
   const rdxCredentials = useSelector(userData);
   const token = rdxCredentials.credentials.token;
-  // console.log(token);
+  const navigate = useNavigate();
+  if (!token) {
+    navigate("/");
+  }
 
   const [appointment, setAppointment] = useState({
     tattoo_id: `${id}`,
@@ -32,7 +27,6 @@ export const CreateAppointment = () => {
     observationsError: '',
     dateError: ''
   })
-
 
   const functionHandler = (e) => {
     setAppointment((prevState) => ({
@@ -49,14 +43,13 @@ export const CreateAppointment = () => {
       [e.target.name + 'Error']: error,
     }));
   }
+  const [message, setMessage] = useState()
 
   const Submit = () => {
     userCreateAppointment(token, appointment)
       .then(
         resultado => {
-          //si todo ha ido bien, redirigiremos a myappointments...
-          console.log(resultado.data);
-          const { message } = resultado.data;
+          const { message } = resultado.message;
           setMessage(message);
           setTimeout(() => {
             navigate("/myappointments");
@@ -81,7 +74,7 @@ export const CreateAppointment = () => {
       <CustomInput
         design={`inputDesign ${appointmentError.dateError !== "" ? 'inputDesignError' : ''}`}
         type={"date"}
-        min="1997-01-01" 
+        min="1997-01-01"
         max="2030-12-31"
         name={"date"}
         placeholder={"DD/MM/AAAA"}
@@ -90,7 +83,6 @@ export const CreateAppointment = () => {
         functionBlur={errorCheck}
       />
       <div className='errorMsg'>{appointmentError.dateError}</div>
-
       <div className='buttonSubmit' onClick={Submit}>Submit</div>
     </div>
   );

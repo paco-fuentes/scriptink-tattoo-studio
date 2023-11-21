@@ -6,6 +6,9 @@ body {
 
 img {
   user-drag: none;
-  -moz-user-select: none;
+  draggable: false;
   -webkit-user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

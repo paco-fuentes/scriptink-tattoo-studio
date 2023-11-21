@@ -4,8 +4,6 @@ import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { userLogin, staffLogin } from "../../services/apiCalls";
 import { validator } from "../../services/useful";
 import { useNavigate } from 'react-router-dom';
-
-//useDispatch es necesario para emitir acciones
 import { useDispatch } from "react-redux";
 import { login } from "../userSlice";
 
@@ -49,24 +47,21 @@ export const Login = () => {
         loginPath(resultado);
       })
       .catch(error => {
-        // console.log(error);
         setMsgError(error.message);
         staffLogin(credenciales)
           .then(resultado => {
             loginPath(resultado);
           })
           .catch(error => {
-            // console.log(error);
             setMsgError(error.message);
           });
       });
   };
 
   const loginPath = resultado => {
-    // dispatch token a redux
     dispatch(login({ credentials: resultado.data }));
     const currentRole = resultado.data.role;
-    console.log(currentRole);
+    // console.log(currentRole);
     setTimeout(() => {
       switch (currentRole) {
         case "user":
@@ -84,11 +79,10 @@ export const Login = () => {
     }, 500);
   };
 
-
   return (
     <div className="loginDesign bg-container-log">
       <div className="logPanel inputDesign2 ">
-        <CustomInput className="logPanel inputDesignZ"
+        <CustomInput className="logPanel inputDesign"
           design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
           type={"email"}
           name={"email"}
@@ -98,7 +92,7 @@ export const Login = () => {
           functionBlur={errorCheck}
         />
         <div className='errorMsg'>{userError.emailError}</div>
-        <CustomInput className=" logPanel inputDesignZ"
+        <CustomInput className="logPanel inputDesign"
           design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
           type={"password"}
           name={"password"}

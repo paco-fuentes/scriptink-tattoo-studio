@@ -7,7 +7,6 @@ import { userRegister } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
-
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -24,7 +23,6 @@ export const Register = () => {
     phoneError: ''
   })
 
-
   const functionHandler = (e) => {
     setUser((prevState) => ({
       ...prevState,
@@ -33,39 +31,23 @@ export const Register = () => {
   };
 
   const errorCheck = (e) => {
-
     let error = "";
-
     error = validator(e.target.name, e.target.value);
-
     setUserError((prevState) => ({
       ...prevState,
       [e.target.name + 'Error']: error,
     }));
   }
+  const [message, setMessage] = useState('');
 
   // test para ver si funciona el boton de submit
   const Submit = () => {
-
-    for (let test1 in user) {
-      if (user[test1] === "") {
-        return;
-      }
-
-    }
-
-    for (let test in userError) {
-      if (userError[test] !== "") {
-        return;
-      }
-    }
-
     userRegister(user)
       .then(
         resultado => {
-          //si todo ha ido bien, redirigiremos a login...
-          console.log(resultado.data);
-          const { message } = resultado.data;
+          //si todo ha ido bien, redirigir a login...
+          // console.log(resultado.data.message);
+          const { message } = resultado.data.message;
           setMessage(message);
           setTimeout(() => {
             navigate("/login");

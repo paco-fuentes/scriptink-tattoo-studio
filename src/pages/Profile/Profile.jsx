@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
-
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/useful";
-
-// Importo elementos para conexión a RDX en modo lectura
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { updateUserProfile, userProfile } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
-  // Instancio a RDX en modo lectura
   const datosRdxUser = useSelector(userData);
   const token = datosRdxUser.credentials.token;
-  const [userProfileData, setUserProfileData] = useState(null);
+  const navigate = useNavigate();
+  if (!token) {
+    navigate("/");
+  }
 
+  const [userProfileData, setUserProfileData] = useState(null);
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -25,7 +26,6 @@ export const Profile = () => {
         console.error('Error al obtener el perfil:', error);
       }
     };
-
     getProfile();
   }, [token]);
 
