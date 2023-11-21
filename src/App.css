@@ -1,5 +1,11 @@
 body {
-    background-color: blue;
-    padding: 0;
-    margin: 0;
+  background-color: blue;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
 }
