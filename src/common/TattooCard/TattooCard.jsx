@@ -8,7 +8,6 @@ import { userData } from "../../pages/userSlice";
 export const TattooCard = ({ id, title, image, description, price, selected, SubmitId, selectFunction }) => {
    const rdxCredentials = useSelector(userData);
    const token = rdxCredentials.credentials.token;
-   // const history = useHistory();
    const [change, setChange] = useState(true);
    const navigate = useNavigate();
 

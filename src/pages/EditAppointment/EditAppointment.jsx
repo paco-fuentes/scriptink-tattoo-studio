@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./EditAppointment.css"
-// import './EditAppointment'
 import { userGetAppointmentId, userUpdateAppointmentId } from '../../services/apiCalls';
-
-
-// Importo elementos para conexión a RDX en modo lectura
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-
 import { useNavigate, useParams } from 'react-router-dom';
 import { CustomInput } from '../../common/CustomInput/CustomInput';
 
@@ -17,9 +12,7 @@ export const EditAppointment = () => {
     const { id } = useParams();
 
     const navigate = useNavigate();
-
     if (!token) {
-        console.log("No estás logeado");
         navigate("/");
     }
 
@@ -33,7 +26,7 @@ export const EditAppointment = () => {
         const getAppointmentData = async () => {
             try {
                 const resultado = await userGetAppointmentId(token, id);
-                console.log(resultado.data);
+                // console.log(resultado.data);
                 setAppointment(resultado.data.data);
             } catch (error) {
                 console.log(error);
@@ -53,7 +46,6 @@ export const EditAppointment = () => {
     const handleSaveChanges = async () => {
         try {
             await userUpdateAppointmentId(token, id, { date: appointment.date });
-
             console.log('Fecha de la cita cambiada');
         } catch (error) {
             console.error(error);
@@ -80,12 +72,12 @@ export const EditAppointment = () => {
                     functionBlur={() => { }}
                 />
                 <div className='buttonPanel'>
-                    <button className="buttonSubmitEdit" onClick={handleEditToggle}>
-                        {dateEdit ? 'Disable Editing' : 'Enable Editing'}
-                    </button>
-                    <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
-                        Save Changes
-                    </button>
+                <button className="buttonSubmitEdit"  onClick={handleEditToggle}>
+                    {dateEdit ? 'Disable Editing' : 'Enable Editing'}
+                </button>
+                <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
+                    Save Changes
+                </button>
                 </div>
             </div>
         </div>

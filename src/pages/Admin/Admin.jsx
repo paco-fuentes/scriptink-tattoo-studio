@@ -8,11 +8,15 @@ import { useNavigate } from 'react-router-dom';
 export const Admin = () => {
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
+    const role = datosRdxUser.credentials.role;
     const navigate = useNavigate();
 
     if (!token) {
         navigate("/");
-      }
+    }
+    if (role !== "admin" && token) {
+        navigate("/");
+    }
 
     const [getUsers, setGetUsers] = useState([]);
 
@@ -21,7 +25,7 @@ export const Admin = () => {
             await deleteUserById(token, userId);
             // actualiar la lista de usuarios ...
             const response = await bringAllUsers(token);
-            console.log("Response data:", response.data);
+            // console.log(response.data);
             setGetUsers(response.data.data);
         } catch (error) {
             console.error("Error deleting user:", error);

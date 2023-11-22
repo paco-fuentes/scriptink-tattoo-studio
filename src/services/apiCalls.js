@@ -19,7 +19,6 @@ export const userRegister = async (body) => {
 
 // user
 export const userProfile = async (token) => {
-  // console.log('Token en userProfile:', token);
   return await axios.get(`http://localhost:4000/user/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -91,6 +90,34 @@ export const deleteUserById = async (token, id) => {
 // worker
 export const workerGetAppointments = async (token) => {
   return await axios.get(`http://localhost:4000/staff/myappointments`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getAppointmentById = async (token, id) => {
+  return await axios.get(`http://localhost:4000/staff/myappointment/${id}'`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const editAppointmentById = async (token, id, body) => {
+  return await axios.put(
+    `http://localhost:4000/staff/myappointment/${id}`,
+    body,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+export const deleteAppointmentById = async (token, id) => {
+  return await axios.delete(`http://localhost:4000/staff/myappointment/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-import { workerGetAppointments } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
+import {  workerGetAppointments } from "../../services/apiCalls";
 import "./Worker.css";
-
-// Importo elementos para conexión a RDX en modo lectura
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { useNavigate } from "react-router-dom";
 
 export const Worker = () => {
-    // Instancio a RDX en modo lectura
     const datosRdxUser = useSelector(userData);
     const token = datosRdxUser.credentials.token;
+    const role = datosRdxUser.credentials.role;
     const navigate = useNavigate();
 
     if (!token) {
+        navigate("/");
+    }
+    if (role !== "worker" && token) {
         navigate("/");
     }
 
@@ -30,6 +30,8 @@ export const Worker = () => {
                 .catch((error) => console.log(error));
         }
     }, []);
+
+
 
     return (
         <div className="myAppointmentsDesign">
@@ -47,7 +49,7 @@ export const Worker = () => {
                         {/* <p>Modificado: {appointment.updated_at || "No date available"}</p> */}
                         {/* <p>Usuario actual: {appointment.user_id|| "No date available"}</p> */}
 
-                        <div className='buttonSubmitAppointment' onClick={() => { navigate(`/myappointments/${appointment.id}`) }}>Edit Appointment</div>
+                        <div className='buttonSubmitAppointment' onClick={() => { navigate(`/myappointment/${appointment.id}`) }}>Edit Appointment</div>
                     </div>
                 ))
             ) : (
