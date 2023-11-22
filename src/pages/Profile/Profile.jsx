@@ -96,7 +96,8 @@ export const Profile = () => {
   };
   // const [isEnabled, setIsEnabled] = useState(true);
   return (
-    <div className="profileDesign">
+    <div className="profileDesign bg-container-prof">
+      <div className="profilePanel inputDesign">
       <CustomInput
         disabled={isEnabled}
         design={`inputDesign ${profileError.firstnameError !== "" ? "inputDesignError" : ""
@@ -157,6 +158,7 @@ export const Profile = () => {
           ? (<div className="editDesign" onClick={() => setIsEnabled(!isEnabled)}>Edit</div>)
           : (<div className="sendDesign" onClick={() => sendData()}>Send</div>)
       }
+      </div>
     </div>
   );
 };

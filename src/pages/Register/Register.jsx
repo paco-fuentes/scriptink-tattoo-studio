@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Register.css";
-
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/useful";
 import { userRegister } from "../../services/apiCalls";
@@ -40,13 +39,10 @@ export const Register = () => {
   }
   const [message, setMessage] = useState('');
 
-  // test para ver si funciona el boton de submit
   const Submit = () => {
     userRegister(user)
       .then(
         resultado => {
-          //si todo ha ido bien, redirigir a login...
-          // console.log(resultado.data.message);
           const { message } = resultado.data.message;
           setMessage(message);
           setTimeout(() => {
@@ -58,48 +54,51 @@ export const Register = () => {
   }
 
   return (
-    <div className="registerDesign">
-      <CustomInput
-        design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
-        type={"email"}
-        name={"email"}
-        placeholder={"email@email.email"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{userError.emailError}</div>
-      <CustomInput
-        design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
-        type={"password"}
-        name={"password"}
-        placeholder={"password"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{userError.passwordError}</div>
-      <CustomInput
-        design={`inputDesign ${userError.nameError !== "" ? 'inputDesignError' : ''}`}
-        type={"text"}
-        name={"name"}
-        placeholder={"name"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{userError.nameError}</div>
-      <CustomInput
-        design={`inputDesign ${userError.phoneError !== "" ? 'inputDesignError' : ''}`}
-        type={"text"}
-        name={"phone"}
-        placeholder={"phone"}
-        // value={}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{userError.phoneError}</div>
-      <div className='buttonSubmitReg' onClick={Submit}>Submit</div>
+    <div className="registerDesign bg-container-reg">
+      <div className="regPanel inputDesign2 ">
+        <CustomInput
+          design={`inputDesign ${userError.emailError !== "" ? 'inputDesignError' : ''}`}
+          type={"email"}
+          name={"email"}
+          placeholder={"email@email.email"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.emailError}</div>
+        <CustomInput
+          design={`inputDesign ${userError.passwordError !== "" ? 'inputDesignError' : ''}`}
+          type={"password"}
+          name={"password"}
+          placeholder={"password"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.passwordError}</div>
+        <CustomInput
+          design={`inputDesign ${userError.nameError !== "" ? 'inputDesignError' : ''}`}
+          type={"text"}
+          name={"name"}
+          placeholder={"name"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.nameError}</div>
+        <CustomInput
+          design={`inputDesign ${userError.phoneError !== "" ? 'inputDesignError' : ''}`}
+          type={"text"}
+          name={"phone"}
+          placeholder={"phone"}
+          // value={}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.phoneError}</div>
+        <div className='buttonSubmitReg' onClick={Submit}>Submit</div>
+      </div>
     </div>
+
   );
 };

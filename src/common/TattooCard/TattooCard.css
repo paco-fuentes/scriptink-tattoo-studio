@@ -10,10 +10,10 @@
   flex-direction: column;
 
   background-color: rgb(255, 255, 255);
-  border-style:solid;
+  border-style: solid;
   border-color: black;
 
-  transition: 150ms;
+  transition: 300ms;
   margin: 2em;
 }
 
@@ -22,25 +22,14 @@
   transition: 150ms;
 }
 
-.selectedCard {
-  .tattoo {
-    height: 50vh;
-    width: 50vw;
-    transition: 300ms;
-    border-radius: 0.3em;
-    border-style:solid;
-    border-color: black;
-    z-index: 2;
-  }
-}
-
 .tattoo {
   height: 15em;
   width: 15em;
   border-radius: 0.3em;
-  border-style:solid;
+  border-style: solid;
   border-color: black;
   transition: 300ms;
+  object-fit: cover;
 }
 
 .txt {
@@ -67,4 +56,19 @@
   transition: 0.4s;
   background-color: rgb(46, 46, 46);
   cursor: pointer;
+}
+.selectedCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .tattoo {
+    height: 75vh;
+    width: 75vw;
+    object-fit: cover;
+    transition: 300ms;
+    border-radius: 0.3em;
+    border-style: solid;
+    border-color: black;
+    z-index: 3;
+  }
 }

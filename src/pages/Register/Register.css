@@ -10,16 +10,41 @@
   flex-direction: column;
 
   color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(250, 250, 250);
 
   text-align: center;
   font-weight: lighter;
   font-size: 1rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  z-index: 2;
 }
 
 .errorMsg {
   color: rgb(255, 0, 0);
+}
+
+.regPanel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: white;
+  width: 18em;
+  height: 30em;
+
+  border-color: black;
+  border-style: solid;
+  border-width: 0.3em;
+  border-radius: 0.3em;
+}
+
+.inputDesign {
+  z-index: 2;
+}
+
+.inputDesign2 {
+  z-index: 1;
 }
 
 .buttonSubmitReg {
@@ -33,10 +58,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .buttonSubmitReg:hover {
   transition: 0.4s;
   background-color: rgb(46, 46, 46);
   cursor: pointer;
+  z-index: 2;
+}
+
+.bg-container-reg {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  background-image: url(./src/assets/images/sciptink-2.jpeg);
+  background-size: cover;
+  background-position: center 80%;
+}
+
+.bg-container-reg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
 }

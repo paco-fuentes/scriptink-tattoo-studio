@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Gallery.css";
 import { bringTattoos } from "../../services/apiCalls";
 import { TattooCard } from "../../common/TattooCard/TattooCard";
-// import { Container, Row, Col } from "react-bootstrap";
-
 
 export const Gallery = () => {
     const [tattoos, setTattoos] = useState([]);
@@ -18,17 +16,16 @@ export const Gallery = () => {
         }
     }, [tattoos]);
 
-
     return (
         <div >
             {
                 tattoos.length > 0
                     ? (
                         <div>
-                            <div className='galleryDesign tattooRoster'>
+                            <div className='galleryDesign tattooRoster bg-container-gallery'>
                                 {tattoos.map((tattoo) => {
                                     return (
-                                        <div key={tattoo.id} className="">
+                                        <div key={tattoo.id} className="imageTattoo">
                                             <TattooCard
                                                 key={tattoo.id}
                                                 id={tattoo.id}
@@ -46,7 +43,7 @@ export const Gallery = () => {
                         </div>
                     )
                     : (
-                        <div>Aún no han venido</div>
+                        <div>Cargando tattoos...</div>
                     )
             }
         </div>
