@@ -60,30 +60,32 @@ export const CreateAppointment = () => {
   }
 
   return (
-    <div className="createAppointmentDesign">
-      <CustomInput
-        design={`inputDesign ${appointmentError.observationsError !== "" ? 'inputDesignError' : ''}`}
-        type={""}
-        name={"observations"}
-        placeholder={"Comentario..."}
-        value={''}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{appointmentError.observationsError}</div>
-      <CustomInput
-        design={`inputDesign ${appointmentError.dateError !== "" ? 'inputDesignError' : ''}`}
-        type={"date"}
-        min="1997-01-01"
-        max="2030-12-31"
-        name={"date"}
-        placeholder={"DD/MM/AAAA"}
-        value={''}
-        functionProp={functionHandler}
-        functionBlur={errorCheck}
-      />
-      <div className='errorMsg'>{appointmentError.dateError}</div>
-      <div className='buttonSubmit' onClick={Submit}>Submit</div>
+    <div className="createAppointmentDesign bg-container-create">
+      <div className="createAppointmentPanel"> <p><strong>Crear cita:</strong></p><p>Mensaje para nuestro tatuador:</p>
+        <CustomInput
+          design={`inputDesign ${appointmentError.observationsError !== "" ? 'inputDesignError' : ''}`}
+          type={""}
+          name={"observations"}
+          placeholder={"Comentario..."}
+          value={''}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{appointmentError.observationsError}</div><p>Fecha para la cita:</p>
+        <CustomInput
+          design={`inputDesign ${appointmentError.dateError !== "" ? 'inputDesignError' : ''}`}
+          type={"date"}
+          min="1997-01-01"
+          max="2030-12-31"
+          name={"date"}
+          placeholder={"DD/MM/AAAA"}
+          value={''}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{appointmentError.dateError}</div>
+        <div className='buttonSubmitCreate' onClick={Submit}>Submit</div>
+      </div>
     </div>
   );
 };

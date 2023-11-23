@@ -67,28 +67,30 @@ export const WorkerEditAppointment = () => {
      };
 
      return (
-          <div className="editAppointmentDesign">
-               <p><strong>Artista: {appointment.tattooArtist?.firstname || "No date available"}</strong></p>
-               <CustomInput
-                    disabled={!dateEdit}
-                    design=""
-                    type="date"
-                    name="date"
-                    placeholder="Enter date"
-                    value={appointment.date || ''}
-                    functionProp={handleDateChange}
-                    functionBlur={() => { }}
-               />
-               <div className='buttonPanel'>
-                    <button className="buttonSubmitEdit" onClick={handleEditToggle}>
-                         {dateEdit ? 'Disable Editing' : 'Enable Editing'}
-                    </button>
-                    <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
-                         Save Changes
-                    </button>
-                    <button className="buttonSubmitEdit" onClick={handleDeleteAppointment}>
-                         Delete Appointment
-                    </button>
+          <div className="editAppointmentWorkerDesign">
+               <div className="appointmentWorkerPanel">
+                    <p><strong>Artista: {appointment.tattooArtist?.firstname || "No date available"}</strong></p>
+                    <CustomInput
+                         disabled={!dateEdit}
+                         design=""
+                         type="date"
+                         name="date"
+                         placeholder="Enter date"
+                         value={appointment.date || ''}
+                         functionProp={handleDateChange}
+                         functionBlur={() => { }}
+                    />
+                    <div className='buttonPanel'>
+                         <button className="buttonSubmitEditWorker" onClick={handleEditToggle}>
+                              {dateEdit ? 'Disable Editing' : 'Enable Editing'}
+                         </button>
+                         <button className="buttonSubmitEditWorker" onClick={handleSaveChanges} disabled={!dateEdit}>
+                              Save Changes
+                         </button>
+                         <button className="buttonSubmitEditWorker" onClick={handleDeleteAppointment}>
+                              Delete Appointment
+                         </button>
+                    </div>
                </div>
           </div>
      );

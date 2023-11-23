@@ -9,7 +9,7 @@
   align-items: center;
   flex-direction: column;
 
-  color: white;
+  color: rgb(0, 0, 0);
   background-color: rgb(0, 0, 0);
 
   text-align: center;
@@ -18,13 +18,30 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+.createAppointmentPanel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: white;
+  width: 18em;
+  height: 26em;
+  border-color: black;
+  border-style: solid;
+  border-width: 0.3em;
+  border-radius: 0.3em;
+  z-index: 2;
+}
+
+
 .errorMsg {
   color: red;
 }
 
-.buttonSubmit {
+.buttonSubmitCreate {
   height: 3em;
-  width: 8em;
+  width: 6em;
 
   border-radius: 1em;
   background-color: crimson;
@@ -36,8 +53,31 @@
   align-items: center;
 }
 
-.buttonSubmit:hover {
-  transition: 0.4s;
+.buttonSubmitCreate:hover {
+  transition: 0.2s;
   background-color: lightcoral;
   cursor: pointer;
+}
+
+.bg-container-create {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  background-image: url(../src/assets/images/sciptink-7.jpeg);
+  background-size: cover;
+  background-position: center 90%;
+}
+
+.bg-container-create::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0,0,0, 1) 100%
+  );
+  z-index: 1;
 }

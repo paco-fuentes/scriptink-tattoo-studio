@@ -53,8 +53,8 @@ export const EditAppointment = () => {
     };
 
     return (
-        <div className="editAppointmentDesign">
-            <div>
+        <div className="editAppointmentDesign bg-container-app">
+            <div className="appointmentPanel inputDesign2">
                 <p><strong>Artista: {appointment.tattooArtist?.firstname || "No date available"}</strong></p>
                 <p>Tatuaje: {appointment.tattoo?.title || "No date available"}</p>
                 <p>Precio: {`${appointment.tattoo?.price}€` || "No date available"}</p>
@@ -72,12 +72,12 @@ export const EditAppointment = () => {
                     functionBlur={() => { }}
                 />
                 <div className='buttonPanel'>
-                <button className="buttonSubmitEdit"  onClick={handleEditToggle}>
-                    {dateEdit ? 'Disable Editing' : 'Enable Editing'}
-                </button>
-                <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
-                    Save Changes
-                </button>
+                    <button className="buttonSubmitEdit" onClick={handleEditToggle}>
+                        {dateEdit ? 'Disable Editing' : 'Enable Editing'}
+                    </button>
+                    <button className="buttonSubmitEdit" onClick={handleSaveChanges} disabled={!dateEdit}>
+                        Save Changes
+                    </button>
                 </div>
             </div>
         </div>

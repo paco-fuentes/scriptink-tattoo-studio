@@ -67,9 +67,9 @@
     position: relative;
     height: 90vh;
     overflow: hidden;
-    background-image: url(./src/assets/images/sciptink-3.jpeg);
+    background-image: url(../src/assets/images/sciptink-3.jpeg);
     background-size: cover;
-    background-position: center 80%;
+    background-position: center 90%;
   }
   
   .bg-container-log::before {

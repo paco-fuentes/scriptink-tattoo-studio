@@ -48,11 +48,12 @@ export const Admin = () => {
     };
 
     return (
-        <div>
+        <div className="usersDesign">
+
             {getUsers.length > 0 ? (
                 getUsers.map((getUser) => (
-                    <div key={getUser.id}>
-                        <div>
+                    <div key={getUser.id} >
+                        <div className="userCards">
                             <p>id: {getUser.id}</p>
                             <p>Nombre: {getUser.firstname}</p>
                             <p>Apellido: {getUser.lastname}</p>
@@ -62,13 +63,14 @@ export const Admin = () => {
                             <p>Provilegios: {getUser.role}</p>
                             <p>Activo: {getUser.is_active ? "Sí" : "No"}</p>
 
-                            <div className='buttonSubmit' onClick={() => { selectedUser(getUser.id) }}>Borrar Usuario</div>
+                            <div className='buttonDelUSer' onClick={() => { selectedUser(getUser.id) }}>Borrar Usuario</div>
                         </div>
                     </div>
                 ))
             ) : (
                 getUsers.length === 0 && <p>Spinner de usuarios...</p>
             )}
+
         </div>
     );
 }
