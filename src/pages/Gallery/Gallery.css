@@ -17,26 +17,27 @@
   font-size: 1rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   flex-wrap: wrap;
+
 }
 
 .bg-container-gallery {
   position: relative;
   height: 90vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url(../src/assets/images/sciptink-4.jpeg);
   background-size: cover;
   background-position: center 22%;
+  background-attachment: fixed;
+  overflow-y: auto; 
 }
 
 .bg-container-gallery::before {
+  position: relative;
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background: linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
-  z-index: 1;
+  background-attachment: fixed;
+  overflow-y: auto; 
+  z-index: 9;
 }
 .imageTattoo {
   z-index: 1;
@@ -47,3 +48,5 @@
   font-size: 2rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+
+
